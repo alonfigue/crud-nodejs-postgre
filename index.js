@@ -82,7 +82,7 @@ app.get('/', (req, res) => {
     
     .db-button {
         position: absolute;
-        top: 40%;
+        top: 35%;
         width: 100%;
         text-align: center;
         font-size: 25px;
@@ -150,6 +150,7 @@ app.get('/', (req, res) => {
     <form action="/personas/update" method="POST">
     <label for="oldCI">EDITAR DATOS DE UNA PERSONA:</label>
     <input placeholder="Introducir Cedula actual" type="text" name="oldCI" id="oldCI">
+    <p>&nbsp;</p> 
     <label for="newData">NUEVOS DATOS DE PERSONA:</label>
     <input placeholder="Nuevo Nombre" type="text" name="newNom" id="newNom">
     <input placeholder="Nuevo Apellido" type="text" name="newAp" id="newAp">
