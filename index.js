@@ -1,6 +1,20 @@
-// Basic connection
-
 const { Pool } = require('pg');
+const express = require('express');
+const app = express();
+const morgan = require('morgan');
+require('dotenv').config();
+
+const port = 3000;
+
+app.use(morgan('common'));
+app.use(express.urlencoded({extended:true}));
+app.use(express.json());
+
+
+app.listen(port, {
+    console.log('Server started on port ${port}')
+})
+
 
 
 const pool = new Pool ({
@@ -76,4 +90,3 @@ const deletePersona = async () => {
 };
 
 
-getPersonas();
