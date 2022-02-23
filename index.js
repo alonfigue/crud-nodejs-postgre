@@ -6,7 +6,7 @@ require('dotenv').config();
 
 const port = process.env.PORT;
 
-//variables de entorno
+//usando variables de entorno
 const pool = new Pool ({
     host: process.env.PGHOST,
     user: process.env.PGUSER,
@@ -237,7 +237,7 @@ app.post('/personas/delete', (req, res) => {
 
 
 
-//--------------------------------------- funciones de la db en código -----------------------------------------------------------------------------------
+//--------------------------------------- funciones de js usando sql (esto no se usa en la app del crud) -----------------------------------------------------------------------------------
 const getPersonas = async () => {
     try {
         const res = await pool.query('select * from personas');
