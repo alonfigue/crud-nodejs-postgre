@@ -38,43 +38,47 @@ app.use(express.json());
 
 
 app.get('/', (req, res) => {
-	res.send(`<!DOCTYPE html>
+    res.send(`<!DOCTYPE html>
     <html lang="en">
     <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>CRUD</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD</title>
     </head>
     <body>
-        
-        <form action="/info/get" method="GET">
-            <input type="submit" value="GET">
-        </form>
-        
-        
-        <form action="/info/add" method="POST">
-            <label for="add">ADD:</label>
-            <input type="text" name="add" id="add">
-            <input type="submit" value="ADD">
-        </form>
-        
-        
-        <form action="/info/delete" method="POST">
-            <label for="delete">DELETE:</label>
-            <input type="text" name="delete" id="delete">
-            <input type="submit" value="DELETE">
-        </form>
-        
-        
-        <form action="/info/update" method="POST">
-            <label for="oldValue">OLD VALUE:</label>
-            <input type="text" name="oldValue" id="oldValue">
-            <label for="newValue">NEW VALUE:</label>
-            <input type="text" name="newValue" id="newValue">
-            <input type="submit" value="UPDATE">
-        </form>
-        
+    
+    <form action="/info/get" method="GET">
+    <input type="submit" value="GET">
+    </form>
+    
+    
+    <form action="/info/add" method="POST">
+    <label for="add">ADD:</label>
+    <input type="text" name="nom" id="nom">
+    <input type="text" name="ap" id="ap">
+    <input type="text" name="ci" id="ci">
+    <input type="text" name="age" id="age">
+    <input type="text" name="gender" id="gender">
+    <input type="submit" value="ADD">
+    </form>
+    
+    
+    <form action="/info/delete" method="POST">
+    <label for="delete">DELETE:</label>
+    <input type="text" name="delete" id="delete">
+    <input type="submit" value="DELETE">
+    </form>
+    
+    
+    <form action="/info/update" method="POST">
+    <label for="oldValue">OLD VALUE:</label>
+    <input type="text" name="oldValue" id="oldValue">
+    <label for="newValue">NEW VALUE:</label>
+    <input type="text" name="newValue" id="newValue">
+    <input type="submit" value="UPDATE">
+    </form>
+    
     </body>
     </html>`);
 });
@@ -87,22 +91,51 @@ app.listen(port, () => {
 app.get('/info/get', (req, res) => {
     try {
         pool.connect(async (error, client, release) => {
-            let resp = await client.query('SELECT * FROM personas');
+            let resp = await client.query(`SELECT * FROM personas`);
             release();
             res.json(resp.rows);
         });
     } catch (error) {
         console.log(error)
     }
-})
+});
 
+app.post('/info/add', (req, res) => {
+    try {
+        pool.connect(async (error, client, release) => {
+            let resp = await client.query(`INSERT INTO personas (Nombre, Apellido, Cedula, Edad, Sexo) VALUES ('${req.body.nom}', 
+            '${req.body.ap}', '${req.body.ci}', '${req.body.age}', '${req.body.gender}')`);
+            release();
+            res.redirect('/info/get');
+        });
+    } catch (error) {
+        console.log(error)
+    }
+});
 
+app.post('/info/delete', (req, res) => {
+    try {
+        pool.connect(async (error, client, release) => {
+            let resp = await client.query(`DELETE FROM personas WHERE Cedula = '${req.body.delete}'`);
+            release();
+            res.redirect('/info/get');
+        });
+    } catch (error) {
+        console.log(error)
+    }
+});
 
-
-
-
-
-
+app.post('/info/update', (req, res) => {
+    try {
+        pool.connect(async (error, client, release) => {
+            let resp = await client.query(`UPDATE personas SET Nombre = '${req.body.newValue}' WHERE Nombre = '${req.body.oldValue}'`);
+            release();
+            res.redirect('/info/get');
+        });
+    } catch (error) {
+        console.log(error)
+    }
+});
 
 
 
