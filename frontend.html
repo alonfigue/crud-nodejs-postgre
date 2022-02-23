@@ -8,35 +8,38 @@
 </head>
 <body>
     
-    <form action="/info/get" method="GET">
-        <input type="submit" value="GET">
-    </form>
-    
-    
     <form action="/info/add" method="POST">
-        <label for="add">ADD:</label>
-        <input type="text" name="add" id="nom">
-        <input type="text" name="add" id="ap">
-        <input type="text" name="add" id="ci">
-        <input type="text" name="add" id="age">
-        <input type="text" name="add" id="gender">
-        <input type="submit" value="ADD">
+        <label for="add">AGREGAR PERSONA:</label>
+        <input type="text" name="nom" id="nom">
+        <input type="text" name="ap" id="ap">
+        <input type="text" name="ci" id="ci">
+        <input type="text" name="age" id="age">
+        <input type="text" name="gender" id="gender">
+        <input type="submit" value="CREATE">
     </form>
     
-    
-    <form action="/info/delete" method="POST">
-        <label for="delete">DELETE:</label>
-        <input type="text" name="delete" id="delete">
-        <input type="submit" value="DELETE">
+    <form action="/info/get" method="GET">
+        <input type="submit" value="VER DATOS DE LA BD (READ)">
     </form>
     
     
     <form action="/info/update" method="POST">
-        <label for="oldValue">OLD VALUE:</label>
-        <input type="text" name="oldValue" id="oldValue">
-        <label for="newValue">NEW VALUE:</label>
-        <input type="text" name="newValue" id="newValue">
+        <label for="oldValue">EDITAR DATOS DE UNA PERSONA (C.I.):</label>
+        <input type="text" name="oldValue" id="oldCI">
+        <label for="newValue">NUEVOS DATOS DE PERSONA:</label>
+        <input type="text" name="newValue" id="newNOM">
+        <input type="text" name="newValue" id="newAP">
+        <input type="text" name="newValue" id="newCI">
+        <input type="text" name="newValue" id="newAGE">
+        <input type="text" name="newValue" id="newGEN">
         <input type="submit" value="UPDATE">
+    </form>
+    
+    
+    <form action="/info/delete" method="POST">
+        <label for="delete">ELIMINAR PERSONA (C.I.):</label>
+        <input type="text" name="delete" id="delete">
+        <input type="submit" value="DELETE">
     </form>
     
     

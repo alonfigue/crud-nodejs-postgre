@@ -48,36 +48,40 @@ app.get('/', (req, res) => {
     </head>
     <body>
     
-    <form action="/info/get" method="GET">
-    <input type="submit" value="GET">
-    </form>
-    
-    
     <form action="/info/add" method="POST">
-    <label for="add">ADD:</label>
+    <label for="add">AGREGAR PERSONA:</label>
     <input type="text" name="nom" id="nom">
     <input type="text" name="ap" id="ap">
     <input type="text" name="ci" id="ci">
     <input type="text" name="age" id="age">
     <input type="text" name="gender" id="gender">
-    <input type="submit" value="ADD">
+    <input type="submit" value="CREATE">
     </form>
     
-    
-    <form action="/info/delete" method="POST">
-    <label for="delete">DELETE:</label>
-    <input type="text" name="delete" id="delete">
-    <input type="submit" value="DELETE">
+    <form action="/info/get" method="GET">
+    <input type="submit" value="VER DATOS DE LA BD (READ)">
     </form>
     
     
     <form action="/info/update" method="POST">
-    <label for="oldValue">OLD VALUE:</label>
-    <input type="text" name="oldValue" id="oldValue">
-    <label for="newValue">NEW VALUE:</label>
-    <input type="text" name="newValue" id="newValue">
+    <label for="oldValue">EDITAR DATOS DE UNA PERSONA (C.I.):</label>
+    <input type="text" name="oldValue" id="oldCI">
+    <label for="newValue">NUEVOS DATOS DE PERSONA:</label>
+    <input type="text" name="newValue" id="newNom">
+    <input type="text" name="newValue" id="newAp">
+    <input type="text" name="newValue" id="newCI">
+    <input type="text" name="newValue" id="newAge">
+    <input type="text" name="newValue" id="newGen">
     <input type="submit" value="UPDATE">
     </form>
+    
+    
+    <form action="/info/delete" method="POST">
+    <label for="delete">ELIMINAR PERSONA (C.I.):</label>
+    <input type="text" name="delete" id="delete">
+    <input type="submit" value="DELETE">
+    </form>
+    
     
     </body>
     </html>`);
@@ -86,6 +90,20 @@ app.get('/', (req, res) => {
 
 app.listen(port, () => {
     console.log('Server started on port '+ port);
+});
+
+
+
+app.post('/info/add', (req, res) => {
+    try {
+        pool.connect(async (error, client, release) => {
+            let resp = await client.query(`INSERT INTO personas (Nombre, Apellido, Cedula, Edad, Sexo) VALUES ('${req.body.nom}', '${req.body.ap}', '${req.body.ci}', '${req.body.age}', '${req.body.gender}')`);
+            release();
+            res.redirect('/info/get');
+        });
+    } catch (error) {
+        console.log(error)
+    }
 });
 
 app.get('/info/get', (req, res) => {
@@ -100,11 +118,13 @@ app.get('/info/get', (req, res) => {
     }
 });
 
-app.post('/info/add', (req, res) => {
+
+
+app.post('/info/update', (req, res) => {
     try {
         pool.connect(async (error, client, release) => {
-            let resp = await client.query(`INSERT INTO personas (Nombre, Apellido, Cedula, Edad, Sexo) VALUES ('${req.body.nom}', 
-            '${req.body.ap}', '${req.body.ci}', '${req.body.age}', '${req.body.gender}')`);
+            let resp = await client.query(`UPDATE personas SET Nombre = '${req.body.newNOM}', Apellido = '${req.body.newAP}', Cedula = '${req.body.newCI}', Edad = '${req.body.newAGE}', Sexo = '${req.body.newGEN}' 
+            WHERE Cedula = '${req.body.oldCI}'`);
             release();
             res.redirect('/info/get');
         });
@@ -117,18 +137,6 @@ app.post('/info/delete', (req, res) => {
     try {
         pool.connect(async (error, client, release) => {
             let resp = await client.query(`DELETE FROM personas WHERE Cedula = '${req.body.delete}'`);
-            release();
-            res.redirect('/info/get');
-        });
-    } catch (error) {
-        console.log(error)
-    }
-});
-
-app.post('/info/update', (req, res) => {
-    try {
-        pool.connect(async (error, client, release) => {
-            let resp = await client.query(`UPDATE personas SET Nombre = '${req.body.newValue}' WHERE Nombre = '${req.body.oldValue}'`);
             release();
             res.redirect('/info/get');
         });
