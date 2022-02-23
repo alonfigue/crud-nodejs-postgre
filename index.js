@@ -6,6 +6,32 @@ require('dotenv').config();
 
 const port = 3000;
 
+
+
+const pool = new Pool ({
+    host: 'localhost',
+    user: 'postgres',
+    password: '28536894af',
+    port: '5433',
+    database: 'datos'
+})
+
+/*
+o también válido:
+//todo se guarda en la constante llamada config
+
+const config = {
+    host: 'localhost',
+    user: 'postgres',
+    password: '28536894af',
+    port: '5433',
+    database: 'datos'
+};
+
+//conexión 
+const pool = new Pool(config);
+*/
+
 app.use(morgan('common'));
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
@@ -58,34 +84,30 @@ app.listen(port, () => {
     console.log('Server started on port '+ port);
 });
 
-
-const pool = new Pool ({
-    host: 'localhost',
-    user: 'postgres',
-    password: '28536894af',
-    port: '5433',
-    database: 'datos'
+app.get('/info/get', (req, res) => {
+    try {
+        pool.connect(async (error, client, release) => {
+            let resp = await client.query('SELECT * FROM personas');
+            release();
+            res.json(resp.rows);
+        });
+    } catch (error) {
+        console.log(error)
+    }
 })
 
-/*
-o también válido:
-//todo se guarda en la constante llamada config
-
-const config = {
-    host: 'localhost',
-    user: 'postgres',
-    password: '28536894af',
-    port: '5433',
-    database: 'datos'
-};
-
-//conexión 
-const pool = new Pool(config);
-*/
 
 
 
-//funciones
+
+
+
+
+
+
+
+
+//--------------------------------------- funciones de la db en código -----------------------------------------------------------------------------------
 const getPersonas = async () => {
     try {
         const res = await pool.query('select * from personas');
