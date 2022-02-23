@@ -2,18 +2,19 @@
 
 const { Pool } = require('pg');
 
-/*
-también es válido solo:
 
-new Pool ({
+const pool = new Pool ({
     host: 'localhost',
     user: 'postgres',
-    password: '',
-    database: 'library'
+    password: '28536894af',
+    port: '5433',
+    database: 'datos'
 })
-*/
 
+/*
+o también válido:
 //todo se guarda en la constante llamada config
+
 const config = {
     host: 'localhost',
     user: 'postgres',
@@ -24,9 +25,11 @@ const config = {
 
 //conexión 
 const pool = new Pool(config);
+*/
 
 
-//funcion para obtener las tablas. Se usa el async await
+
+//funciones
 const getPersonas = async () => {
     try {
         const res = await pool.query('select * from personas');
@@ -39,9 +42,6 @@ const getPersonas = async () => {
     }
 };
 
-//para llamar una función es: getPersonas(); 
-
-//insertar a las tablas
 const insertPersona = async () => {
     try {
         const text = 'INSERT INTO personas(Nombre, Apellido, Cedula, Edad, Sexo) VALUES ($1, $2, $3, $4, $5)';
