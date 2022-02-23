@@ -39,7 +39,7 @@ app.get('/', (req, res) => {
     
     .red-button {
         font-family: Arial, Helvetica, sans-serif;
-        background-color: #f44336; 
+        background-color: #882018; 
         border-radius: 12px;
         color: white;
         padding: 13px 12px;
@@ -61,7 +61,7 @@ app.get('/', (req, res) => {
     .green-button {
         text-align: center;
         font-family: Arial, Helvetica, sans-serif;
-        background-color: #4CAF50; 
+        background-color: #236f26; 
         border-radius: 12px;
         color: white;
         padding: 13px 12px;
@@ -95,7 +95,7 @@ app.get('/', (req, res) => {
         font-size: 18px;
         background-color: silver;
     }
-
+    
     .top-right-sided {
         position: absolute;
         top: 100px;
@@ -103,7 +103,7 @@ app.get('/', (req, res) => {
         font-size: 18px;
         background-color: silver;
     }
-
+    
     .above-delete {
         position: absolute;
         bottom: 180px;
@@ -124,11 +124,11 @@ app.get('/', (req, res) => {
     </head>
     <body>
     
-    <h1 id="Titulo">IU para hacer uso del CRUD</h1>
+    <h1 id="Titulo">IU para hacer uso de un CRUD</h1>
     
     <div class="top-left-sided">
     <form action="/personas/create" method="POST">
-    <label for="create">AGREGAR PERSONA A LA BD:</label>
+    <label for="create">AGREGAR PERSONA A LA TABLA:</label>
     <input placeholder="Nombre" type="text" name="nom" id="nom">
     <input placeholder="Apellido" type="text" name="ap" id="ap">
     <input placeholder="Cedula" type="text" name="ci" id="ci">
@@ -141,11 +141,11 @@ app.get('/', (req, res) => {
     
     <div class="db-button">
     <form action="/personas/get" method="GET">
-    <input class="green-button" type="submit" value="VER DATOS DE LA BD (READ)">
+    <input class="green-button" type="submit" value="VER DATOS DE LA TABLA (READ)">
     </form>
     </div>
     
-
+    
     <div class="above-delete">
     <form action="/personas/update" method="POST">
     <label for="oldCI">EDITAR DATOS DE UNA PERSONA:</label>
@@ -158,12 +158,12 @@ app.get('/', (req, res) => {
     <input placeholder="Nuevo Genero" type="text" name="newGen" id="newGen">
     <input class="red-button" type="submit" value="UPDATE">
     </form>
-</div>
+    </div>
     
     
     <div class="left-side">
     <form action="/personas/delete" method="POST">
-    <label for="delete">ELIMINAR PERSONA:</label>
+    <label for="delete">ELIMINAR PERSONA DE LA TABLA:</label>
     <input placeholder="Introducir Cedula" type="text" name="delete" id="delete">
     <input class="red-button" type="submit" value="DELETE">
     </form>
