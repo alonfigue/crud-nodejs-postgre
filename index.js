@@ -27,8 +27,9 @@ app.get('/', (req, res) => {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CRUD-nodejs-postgresql</title>
+    <title>crud-nodejs-postgresql</title>
     <style>
+    
     #Titulo {
         color: rgb(31, 31, 196);
         font-family: Georgia, Verdana, sans-serif;
