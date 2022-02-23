@@ -4,33 +4,15 @@ const app = express();
 const morgan = require('morgan');
 require('dotenv').config();
 
-const port = 3000;
-
-
+const port = process.env.PORT;
 
 const pool = new Pool ({
-    host: 'localhost',
-    user: 'postgres',
-    password: '28536894af',
-    port: '5433',
-    database: 'datos'
+    host: process.env.PGHOST,
+    user: process.env.PGUSER,
+    password: process.env.PGPASSWORD,
+    port: process.env.PGPORT,
+    database: process.env.PGDATABASE
 })
-
-/*
-o también válido:
-//todo se guarda en la constante llamada config
-
-const config = {
-    host: 'localhost',
-    user: 'postgres',
-    password: '28536894af',
-    port: '5433',
-    database: 'datos'
-};
-
-//conexión 
-const pool = new Pool(config);
-*/
 
 app.use(morgan('common'));
 app.use(express.urlencoded({extended:true}));
@@ -45,7 +27,6 @@ app.get('/', (req, res) => {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CRUD</title>
-    <link rel="stylesheet" href="styles.css"> 
     </head>
     <body>
     
@@ -194,5 +175,3 @@ const deletePersona = async () => {
         console.log(e);
     }
 };
-
-
