@@ -11,10 +11,52 @@ app.use(express.urlencoded({extended:true}));
 app.use(express.json());
 
 
-app.listen(port, {
-    console.log('Server started on port ${port}')
-})
+app.get('/', (req, res) => {
+	res.send(`<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>CRUD</title>
+    </head>
+    <body>
+        
+        <form action="/info/get" method="GET">
+            <input type="submit" value="GET">
+        </form>
+        
+        
+        <form action="/info/add" method="POST">
+            <label for="add">ADD:</label>
+            <input type="text" name="add" id="add">
+            <input type="submit" value="ADD">
+        </form>
+        
+        
+        <form action="/info/delete" method="POST">
+            <label for="delete">DELETE:</label>
+            <input type="text" name="delete" id="delete">
+            <input type="submit" value="DELETE">
+        </form>
+        
+        
+        <form action="/info/update" method="POST">
+            <label for="oldValue">OLD VALUE:</label>
+            <input type="text" name="oldValue" id="oldValue">
+            <label for="newValue">NEW VALUE:</label>
+            <input type="text" name="newValue" id="newValue">
+            <input type="submit" value="UPDATE">
+        </form>
+        
+    </body>
+    </html>`);
+});
 
+
+app.listen(port, () => {
+    console.log('Server started on port '+ port);
+});
 
 
 const pool = new Pool ({
@@ -60,7 +102,7 @@ const insertPersona = async () => {
     try {
         const text = 'INSERT INTO personas(Nombre, Apellido, Cedula, Edad, Sexo) VALUES ($1, $2, $3, $4, $5)';
         const values = ['Luis', 'Pina', 14582713, 42, 'Masculino'];
-
+        
         const res = await pool.query(text, values);
         console.log(res)
         pool.end();
@@ -74,7 +116,7 @@ const editPersona = async () => {
     const values = ['Luigi', 'Luis'];
     const res = await pool.query(text, values);
     console.log(res)
-   pool.end();
+    pool.end();
 };
 
 const deletePersona = async () => {
