@@ -6,6 +6,7 @@ require('dotenv').config();
 
 const port = process.env.PORT;
 
+//variables de entorno
 const pool = new Pool ({
     host: process.env.PGHOST,
     user: process.env.PGUSER,
