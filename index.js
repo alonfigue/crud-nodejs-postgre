@@ -64,14 +64,14 @@ app.get('/', (req, res) => {
     
     
     <form action="/info/update" method="POST">
-    <label for="oldValue">EDITAR DATOS DE UNA PERSONA (C.I.):</label>
-    <input type="text" name="oldValue" id="oldCI">
-    <label for="newValue">NUEVOS DATOS DE PERSONA:</label>
-    <input type="text" name="newValue" id="newNom">
-    <input type="text" name="newValue" id="newAp">
-    <input type="text" name="newValue" id="newCI">
-    <input type="text" name="newValue" id="newAge">
-    <input type="text" name="newValue" id="newGen">
+    <label for="oldCI">EDITAR DATOS DE UNA PERSONA (C.I.):</label>
+    <input type="text" name="oldCI" id="oldCI">
+    <label for="newData">NUEVOS DATOS DE PERSONA:</label>
+    <input type="text" name="newNom" id="newNom">
+    <input type="text" name="newAp" id="newAp">
+    <input type="text" name="newCI" id="newCI">
+    <input type="text" name="newAge" id="newAge">
+    <input type="text" name="newGen" id="newGen">
     <input type="submit" value="UPDATE">
     </form>
     
@@ -123,8 +123,7 @@ app.get('/info/get', (req, res) => {
 app.post('/info/update', (req, res) => {
     try {
         pool.connect(async (error, client, release) => {
-            let resp = await client.query(`UPDATE personas SET Nombre = '${req.body.newNOM}', Apellido = '${req.body.newAP}', Cedula = '${req.body.newCI}', Edad = '${req.body.newAGE}', Sexo = '${req.body.newGEN}' 
-            WHERE Cedula = '${req.body.oldCI}'`);
+            let resp = await client.query(`UPDATE personas SET Nombre = '${req.body.newNom}', Apellido = '${req.body.newAp}', Cedula = '${req.body.newCI}', Edad = '${req.body.newAge}', Sexo = '${req.body.newGen}' WHERE Cedula = '${req.body.oldCI}'`);
             release();
             res.redirect('/info/get');
         });
@@ -132,6 +131,7 @@ app.post('/info/update', (req, res) => {
         console.log(error)
     }
 });
+
 
 app.post('/info/delete', (req, res) => {
     try {
