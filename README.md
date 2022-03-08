@@ -1,5 +1,5 @@
 # CRUD
-It was created using Node.js-PostgreSQL with a very cheap user interface, but functional.
+App created using Node.js-PostgreSQL with a very cheap user interface, but functional.
 
 ![image](https://user-images.githubusercontent.com/65868683/155350206-bc80cffd-ecc1-4261-bd95-f5a4bc2c8473.png)
 
