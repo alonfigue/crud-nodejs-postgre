@@ -5,6 +5,31 @@ App created using Node.js and PostgreSQL, with a very cheap user interface, but 
 
 DB: "Datos", Table: "Personas". where the data can be seen organized in JSON format.
 
-![image](https://user-images.githubusercontent.com/65868683/155350839-46dde835-c18b-4a8c-b4b1-ef7a4fa1db3b.png)
+[
+    {
+        "id": 17,
+        "nombre": "Luisana",
+        "apellido": "Finol",
+        "cedula": 30568947,
+        "edad": 16,
+        "sexo": "Femenino"
+    },
+    {
+        "id": 10,
+        "nombre": "Alonso",
+        "apellido": "Figueroa",
+        "cedula": 26984521,
+        "edad": 21,
+        "sexo": "Masculino"
+    },
+    {
+        "id": 18,
+        "nombre": "Carlos",
+        "apellido": "Bracho",
+        "cedula": 15478685,
+        "edad": 39,
+        "sexo": "Masculino"
+    }
+]
 
 (the information shown here is not real, its only purpose is to ilustrate the functionality of the app).
