@@ -1,6 +1,5 @@
 --Comandos para postgresql--
 
-
 -- BD Creada llamada "datos"
 create database datos;
 

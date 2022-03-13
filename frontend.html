@@ -100,54 +100,54 @@
         
     </style>
 </head>
-<body>
-    
-    <h1 id="Titulo">IU para hacer uso de un CRUD</h1>
-    
-    <div class="top-left-sided">
-        <form action="/personas/create" method="POST">
-            <label for="create">AGREGAR PERSONA A LA TABLA:</label>
-            <input placeholder="Nombre" type="text" name="nom" id="nom">
-            <input placeholder="Apellido" type="text" name="ap" id="ap">
-            <input placeholder="Cedula" type="text" name="ci" id="ci">
-            <input placeholder="Edad" type="text" name="age" id="age">
-            <input placeholder="Genero" type="text"name="gender" id="gender">
-            <input class="red-button" type="submit" value="CREATE">
-        </form>
-    </div>
-    
-    
-    <div class="db-button">
-        <form action="/personas/get" method="GET">
-            <input class="green-button" type="submit" value="VER DATOS DE LA TABLA (READ)">
-        </form>
-    </div>
-    
-    
-    <div class="above-delete">
-        <form action="/personas/update" method="POST">
-            <label for="oldCI">EDITAR DATOS DE UNA PERSONA:</label>
-            <input placeholder="Introducir Cedula actual" type="text" name="oldCI" id="oldCI">
-            <p>&nbsp;</p> 
-            <label for="newData">NUEVOS DATOS DE PERSONA:</label>
-            <input placeholder="Nuevo Nombre" type="text" name="newNom" id="newNom">
-            <input placeholder="Nuevo Apellido" type="text" name="newAp" id="newAp">
-            <input placeholder="Nueva Cedula" type="text" name="newCI" id="newCI">
-            <input placeholder="Nueva Edad" type="text" name="newAge" id="newAge">
-            <input placeholder="Nuevo Genero" type="text" name="newGen" id="newGen">
-            <input class="red-button" type="submit" value="UPDATE">
-        </form>
-    </div>
-    
-    
-    <div class="left-side">
-        <form action="/personas/delete" method="POST">
-            <label for="delete">ELIMINAR PERSONA DE LA TABLA:</label>
-            <input placeholder="Introducir Cedula" type="text" name="delete" id="delete">
-            <input class="red-button" type="submit" value="DELETE">
-        </form>
-    </div>
-    
-    
-</body>
-</html>
+<body>           
+            
+            <h1 id="Titulo">IU para hacer uso de un CRUD</h1>
+            
+            <div class="top-left-sided">
+                <form action="/personas/create" method="POST">
+                    <label for="create">AGREGAR PERSONA A LA TABLA:</label>
+                    <input placeholder="Nombre" type="text" name="nom" id="nom">
+                    <input placeholder="Apellido" type="text" name="ap" id="ap">
+                    <input placeholder="Cedula" type="text" name="ci" id="ci">
+                    <input placeholder="Edad" type="text" name="age" id="age">
+                    <input placeholder="Genero" type="text"name="gender" id="gender">
+                    <input class="red-button" type="submit" value="CREATE">
+                </form>
+            </div>
+            
+            
+            <div class="db-button">
+                <form action="/personas/get" method="GET">
+                    <input class="green-button" type="submit" value="VER DATOS DE LA TABLA (READ)">
+                </form>
+            </div>
+            
+            
+            <div class="above-delete">
+                <form action="/personas/update" method="POST">
+                    <label for="oldCI">EDITAR DATOS DE UNA PERSONA:</label>
+                    <input placeholder="Introducir Cedula actual" type="text" name="oldCI" id="oldCI">
+                    <p>&nbsp;</p> 
+                    <label for="newData">NUEVOS DATOS DE PERSONA:</label>
+                    <input placeholder="Nuevo Nombre" type="text" name="newNom" id="newNom">
+                    <input placeholder="Nuevo Apellido" type="text" name="newAp" id="newAp">
+                    <input placeholder="Nueva Cedula" type="text" name="newCI" id="newCI">
+                    <input placeholder="Nueva Edad" type="text" name="newAge" id="newAge">
+                    <input placeholder="Nuevo Genero" type="text" name="newGen" id="newGen">
+                    <input class="red-button" type="submit" value="UPDATE">
+                </form>
+            </div>
+            
+            
+            <div class="left-side">
+                <form action="/personas/delete" method="POST">
+                    <label for="delete">ELIMINAR PERSONA DE LA TABLA:</label>
+                    <input placeholder="Introducir Cedula" type="text" name="delete" id="delete">
+                    <input class="red-button" type="submit" value="DELETE">
+                </form>
+            </div>
+            
+            
+        </body>
+        </html>
