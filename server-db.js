@@ -253,7 +253,7 @@ const getPersonas = async () => {
 const insertPersona = async () => {
     try {
         const text = 'INSERT INTO personas(Nombre, Apellido, Cedula, Edad, Sexo) VALUES ($1, $2, $3, $4, $5)';
-        const values = ['Luis', 'Pina', 14582713, 42, 'Masculino'];
+        const values = ['Luis', 'Pina', 00000000, 42, 'Masculino'];
         
         const res = await pool.query(text, values);
         console.log(res)
